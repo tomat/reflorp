@@ -1,0 +1,31 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss';
+@import '~css/mixins.scss';
+
+// Override bootstrap variables here
+$btn-border-radius-large: 0px;
+$font-family-base: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$input-border-radius: 0;
+$input-border-radius-large: 0;
+$input-border-radius-small: 0;
+$link-color: $brand-primary;
+$link-hover-color: $brand-primary;
+$link-hover-decoration: none;
+$input-color: #343434;
+$well-bg: #fff;
+$well-border: #fff;
+$body-bg: #fafafa;
+$btn-default-bg: transparent;
+$btn-default-border: transparent;
+$btn-border-radius-small: 2px;
+$btn-border-radius-large: 2px;
+$btn-border-radius-base: 2px;
+$hr-border: #ddd;
+$brand-primary: #2196F3;
+$btn-primary-bg: $brand-primary;
+$input-border: $brand-primary;
+$btn-default-color: $brand-primary;
+$navbar-default-bg: $brand-primary;
+$navbar-default-color: #fff;
+$navbar-default-brand-color: #fff;
+$navbar-default-brand-hover-color: #fff;

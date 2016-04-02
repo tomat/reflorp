@@ -1,0 +1,44 @@
+@import '~css/mixins.scss';
+
+.appNavbar {
+  :global(.navbar) {
+    &:global(.navbar-default) {
+      border: 0;
+      transition: all 0.2s ease-in-out;
+      @include card(1);
+      &:hover {
+        @include card(2);
+      }
+
+      :global(.navbar-brand.navbar-brand) {
+        left: 50%;
+        position: absolute;
+        margin-left: -100px;
+        width: 200px;
+        text-align: center;
+      }
+      :global(.navbar-brand) > span {
+        float: none;
+        margin: 0 auto;
+        font-family: Righteous, sans-serif;
+        font-size: 24px;
+        position: absolute;
+        top: 13px;
+        left: 0;
+        right: 0;
+        display: block;
+        opacity: 1;
+        transition: opacity 1s linear;
+        transition-delay: 0s;
+      }
+      :global(.navbar-brand) > :global(span.inactive) {
+        transition: opacity 2s linear;
+        transition-delay: 0s;
+        opacity: 0;
+      }
+      :global(.navbar-nav) > li > a {
+        line-height: 22px;
+      }
+    }
+  }
+}

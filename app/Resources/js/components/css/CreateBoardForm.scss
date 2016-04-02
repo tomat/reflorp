@@ -1,0 +1,18 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss';
+@import '~css/variables.scss';
+
+.createBoardForm {
+  label {
+    font-size: 16px;
+    padding-bottom: 5px;
+  }
+  hr {
+    border-color: #e3e3e3;
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+  .actions {
+    margin-top: $grid-gutter-width;
+    text-align: right;
+  }
+}

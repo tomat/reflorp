@@ -1,0 +1,10 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss';
+@import '~css/variables.scss';
+
+.actions {
+  text-align: right;
+
+  button {
+    color: $brand-primary;
+  }
+}

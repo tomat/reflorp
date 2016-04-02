@@ -1,0 +1,20 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss';
+@import '~css/variables.scss';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
+@import '~css/mixins.scss';
+
+.createNoteContainer {
+  @include make-xs-column(12);
+}
+.createNote {
+  padding-top: $grid-gutter-width;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > :global(.well) {
+    @include make-xs-column(12);
+    max-width: 500px;
+  }
+}

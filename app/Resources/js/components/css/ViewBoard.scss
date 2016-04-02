@@ -1,0 +1,23 @@
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss';
+@import '~css/variables.scss';
+
+.viewBoard {
+  h1 {
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
+    text-align: center;
+    display: block;
+  }
+
+  .notes {
+    > div > :global(.clearfix) {
+      margin-bottom: $grid-gutter-width / 3;
+    }
+  }
+  hr {
+    margin-top: $grid-gutter-width * 5/3;
+  }
+  .loadMoreButton {
+    margin-top: $grid-gutter-width;
+  }
+}
