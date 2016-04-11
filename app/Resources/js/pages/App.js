@@ -4,12 +4,11 @@ import { ReflorpWrapper } from 'react-reflorp';
 import styles from 'css/App.scss';
 
 const App = ({ children }) => (
-  <ReflorpWrapper>
-    <div className={styles.app}>
-        <AppNavbar />
-        {children}
-    </div>
-  </ReflorpWrapper>
+  <div className={styles.app}>
+    <ReflorpWrapper />
+    <AppNavbar />
+    {children}
+  </div>
 );
 
 App.propTypes = {
