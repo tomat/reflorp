@@ -5,7 +5,7 @@ import styles from 'css/EditNoteForm.scss';
 class EditNoteForm extends Component {
   static propTypes = {
     onCancel: PropTypes.func,
-    save: PropTypes.func,
+    doEdit: PropTypes.func,
     error: PropTypes.string,
     data: PropTypes.object,
   };
@@ -16,12 +16,19 @@ class EditNoteForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillMount() {
+    const { doEdit } = this.props;
+
+    // Reset data to latest saved version
+    doEdit(false);
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
-    const { save } = this.props;
+    const { doEdit } = this.props;
 
-    save({ summary: this.refs.summary.getValue() });
+    doEdit({ summary: this.refs.summary.getValue() });
   }
 
   render() {
