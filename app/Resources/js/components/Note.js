@@ -57,7 +57,7 @@ class Note extends Component {
     );
 
     return (
-      <div ref="container" style={{ height }} className={`${className} hasLoader ${[(edit ? styles.edit : ''), styles.noteContainer, (noteDeleteResponse && noteDeleteResponse.pending ? 'loading' : '')].join(' ')}`}>
+      <div ref="container" style={{ height }} className={`${className} ${[(edit ? styles.edit : ''), styles.noteContainer].join(' ')}`}>
         <PageClick onClick={this.onEditDisable}>
           <div ref="note" className={[styles.note, 'well well-sm', (edit ? 'well-active' : '')].join(' ')} onClick={this.onEditEnable}>
             <EntityWrapper key="edit" entity="note" id={note.id} parentId={board.id} onEdit={this.onEditDisable}>
