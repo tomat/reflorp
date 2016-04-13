@@ -32,7 +32,7 @@ export default class CreateNote extends Component {
     return (
       <div className={styles.createNoteContainer}>
         <div className={styles.createNote}>
-          <div className={['well', 'hasLoader', (loading ? 'loading' : '')].join(' ')}>
+          <div className={['well', 'reflorp-loader', (loading ? 'reflorp-loader-loading' : '')].join(' ')}>
             <CreateNoteForm createNote={noteCreate} boardId={boardId} error={error} />
           </div>
         </div>

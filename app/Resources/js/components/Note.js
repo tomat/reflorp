@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PageClick from 'react-page-click';
 import EditNoteForm from 'components/EditNoteForm';
-import EntityWrapper from 'components/EntityWrapper';
 import { Button, Glyphicon } from 'react-bootstrap';
+import { EntityWrapper } from 'react-reflorp';
 import styles from 'css/Note.scss';
 
 class Note extends Component {

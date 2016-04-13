@@ -31,7 +31,7 @@ export default class ViewBoard extends Component {
     let note;
 
     return (
-      <div className={[styles.viewBoard, 'hasLoader', (view.pending ? 'loading' : '')].join(' ')}>
+      <div className={[styles.viewBoard, 'reflorp-loader', (view.pending ? 'reflorp-loader-loading' : '')].join(' ')}>
         <Choose>
           <When condition={view.fulfilled}>
             <h1>{board.value.title}</h1>

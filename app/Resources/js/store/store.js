@@ -32,10 +32,12 @@ reflorpSetEntities({
     onCreate: (board) => {
       myHistory.push(`/board/${board.id}`);
     },
+    plural: 'boards',
   },
   note: {
     parent: 'board',
     count: 'notesCount',
+    plural: 'notes',
   },
 });
 reflorpSetStore(store);

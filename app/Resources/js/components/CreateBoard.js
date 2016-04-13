@@ -28,7 +28,7 @@ export default class CreateBoard extends Component {
     }
 
     return (
-      <div className={['hasLoader', (loading ? 'loading' : '')].join(' ')}>
+      <div className={['reflorp-loader', (loading ? 'reflorp-loader-loading' : '')].join(' ')}>
         <CreateBoardForm createBoard={boardCreate} error={error} />
       </div>
     );
