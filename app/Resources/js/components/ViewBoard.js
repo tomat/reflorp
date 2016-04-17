@@ -20,7 +20,7 @@ export default class ViewBoard extends Component {
     id: PropTypes.any,
     board: PropTypes.instanceOf(PromiseState).isRequired,
     notes: PropTypes.instanceOf(PromiseState).isRequired,
-    notesLoadMore: PropTypes.func,
+    notesLoadMore: PropTypes.any,
   };
 
   render() {
@@ -42,7 +42,7 @@ export default class ViewBoard extends Component {
                 </For>
               </Grid>
             </div>
-            <If condition={board.value.notesCount > notes.value.length}>
+            <If condition={board.value.notesCount > notes.value.length && notesLoadMore}>
               <div key="loadMoreButton" className={['text-center', styles.loadMoreButton].join(' ')}>
                 <LoadMoreButton onClick={notesLoadMore} loading={view.refreshing} />
               </div>
