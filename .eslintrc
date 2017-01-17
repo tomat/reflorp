@@ -4,20 +4,43 @@
   "env": {
     "browser": true,
     "node": true,
-    "jquery": true
+    "jquery": true,
+    "jsx-control-statements/jsx-control-statements": true
   },
   "rules": {
-    "max-len": 0,
+    "arrow-body-style": 0,
+    "func-names": 0,
+    "global-require": 0,
+    "import/no-unresolved": 0,
+    "jsx-a11y/img-has-alt": 0,
     "jsx-control-statements/jsx-choose-not-empty": 1,
     "jsx-control-statements/jsx-for-require-each": 1,
-    "jsx-control-statements/jsx-for-require-index": 1,
     "jsx-control-statements/jsx-for-require-of": 1,
-    "jsx-control-statements/jsx-for-single-child": 1,
     "jsx-control-statements/jsx-if-require-condition": 1,
-    "jsx-control-statements/jsx-if-single-child": 1,
+    "jsx-control-statements/jsx-jcs-no-undef": 1,
+    "jsx-control-statements/jsx-if-single-child": 0,
     "jsx-control-statements/jsx-otherwise-once-last": 1,
     "jsx-control-statements/jsx-use-if-tag": 1,
-    "jsx-control-statements/jsx-when-require-condition": 1
+    "jsx-control-statements/jsx-when-require-condition": 1,
+    "max-len": 0,
+    "no-alert": 1,
+    "no-case-declarations": 0,
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-param-reassign": 0,
+    "no-undef": 0,
+    "object-shorthand": 0,
+    "prefer-arrow-callback": 0,
+    "prefer-template": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-curly-spacing": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-no-bind": 0,
+    "react/jsx-no-duplicate-props": 1,
+    "react/no-multi-comp": 0,
+    "react/prefer-es6-class": 0,
+    "react/prefer-stateless-function": 1,
+    "space-before-function-paren": 0
   },
   "plugins": [
     "react",
@@ -29,18 +52,18 @@
     "import/resolve": {
       "moduleDirectory": [
         "node_modules",
-        "app/Resources/js"
+        "app/Resources/client"
       ]
+    },
+    "react": {
+      "pragma": "React",
+      "version": "15.4.2"
     }
   },
   "globals": {
     "__GLOBALS__": true,
+    "dispatch": true,
     "logger": true,
-    "If": true,
-    "Else": true,
-    "For": true,
-    "Choose": true,
-    "When": true,
-    "Otherwise": true
+    "sweetalert": true
   }
 }

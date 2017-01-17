@@ -1851,11 +1851,9 @@ eslint-plugin-import@1.4.0:
     eslint-import-resolver-node "^0.2.0"
     object-assign "^4.0.1"
 
-eslint-plugin-jsx-control-statements@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-control-statements/-/eslint-plugin-jsx-control-statements-1.1.0.tgz#564b1512419010e004c574fc2a5a24abe4bd4805"
-  dependencies:
-    lodash "^3.10.1"
+eslint-plugin-jsx-control-statements@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-control-statements/-/eslint-plugin-jsx-control-statements-2.1.1.tgz#8e53092749dcf0e6baf04266b303c5d168d58d4f"
 
 eslint-plugin-promise@^1.0.8:
   version "1.3.2"
@@ -2810,9 +2808,9 @@ jsx-ast-utils@^1.2.1:
     acorn-jsx "^3.0.1"
     object-assign "^4.1.0"
 
-jsx-control-statements@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/jsx-control-statements/-/jsx-control-statements-3.1.0.tgz#378e379a154499cd77631a8bf8eaa5003f0a1b06"
+jsx-control-statements@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/jsx-control-statements/-/jsx-control-statements-3.1.5.tgz#a9237aad3e5af6a133a1c3c1fcbbd360bbb5df7c"
   dependencies:
     babel-core "^6.1.2"
     babel-plugin-syntax-jsx "^6.1.18"
@@ -3036,10 +3034,6 @@ lodash.restparam@^3.0.0:
 lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
-
-lodash@^3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@^4.0.0, lodash@^4.11.0, lodash@^4.14.0, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
@@ -3952,11 +3946,7 @@ randombytes@^2.0.0, randombytes@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.3.tgz#674c99760901c3c4112771a31e521dc349cc09ec"
 
-range-parser@^1.0.3:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
-
-range-parser@~1.0.3:
+range-parser@^1.0.3, range-parser@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.0.3.tgz#6872823535c692e2c2a0103826afd82c2e0ff175"
 
