@@ -56,6 +56,13 @@ module.exports = {
 
     // Configure path for served CSS files ("desktop_css" will be served as /dist/desktop_css.css)
     new ExtractTextPlugin('[name].css'),
+
+    // Disable UglifyJS warnings
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    }),
   ],
   resolve: {
     modules: [
