@@ -1,5 +1,5 @@
-import { reflorpReducer } from 'react-reflorp';
+import { reducer as reflorp } from 'react-reflorp';
 
 export default {
-  reflorp: reflorpReducer,
+  reflorp,
 };

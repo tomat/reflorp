@@ -1,9 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import reducers from 'store/reducers';
-import { reflorpSetStore, reflorpSetEntities, reflorpSetBaseUrl } from 'react-reflorp';
-import apiUrl from 'helpers/apiUrl';
-import myHistory from 'router/myHistory';
 
 const middlewares = [];
 if (__GLOBALS__.dev) {
@@ -25,21 +22,5 @@ const reducer = combineReducers({
 const store = finalCreateStore(
   reducer
 );
-
-reflorpSetBaseUrl(apiUrl(''));
-reflorpSetEntities({
-  board: {
-    onCreate: (board) => {
-      myHistory.push(`/board/${board.id}`);
-    },
-    plural: 'boards',
-  },
-  note: {
-    parent: 'board',
-    count: 'notesCount',
-    plural: 'notes',
-  },
-});
-reflorpSetStore(store);
 
 export default store;

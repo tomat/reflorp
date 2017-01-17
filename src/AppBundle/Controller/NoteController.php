@@ -43,7 +43,7 @@ class NoteController extends BaseController
      */
     public function getBoardNotesAction(Board $board, ParamFetcherInterface $paramFetcher)
     {
-        usleep(400);
+        usleep(400000);
 
         return array_values(
             $board->getNotes()->matching(
@@ -63,7 +63,7 @@ class NoteController extends BaseController
      */
     public function postBoardNotesAction(Board $board, ParamFetcherInterface $paramFetcher)
     {
-        usleep(400);
+        usleep(400000);
 
         $note = new Note();
         $note->setBoard($board);
@@ -92,7 +92,7 @@ class NoteController extends BaseController
      */
     public function patchBoardNoteAction(Board $board, Note $note, ParamFetcherInterface $paramFetcher)
     {
-        usleep(400);
+        usleep(400000);
 
         assert($note->getBoard() === $board);
 
@@ -119,7 +119,7 @@ class NoteController extends BaseController
      */
     public function deleteBoardNoteAction(Board $board, Note $note, ParamFetcherInterface $paramFetcher)
     {
-        usleep(400);
+        usleep(400000);
 
         assert($note->getBoard() === $board);
 

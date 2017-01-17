@@ -25,7 +25,7 @@ class BoardController extends BaseController
      */
     public function getBoardAction(Board $board)
     {
-        usleep(400);
+        usleep(400000);
 
         return $board;
     }
@@ -39,7 +39,7 @@ class BoardController extends BaseController
      */
     public function postBoardsAction(ParamFetcherInterface $paramFetcher)
     {
-        usleep(400);
+        usleep(400000);
 
         $board = new Board();
         $board->setTitle($paramFetcher->get('title'));

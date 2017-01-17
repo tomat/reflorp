@@ -1,35 +1,34 @@
 import React, { PropTypes, Component } from 'react';
-import CreateBoardForm from 'components/CreateBoardForm';
-import { redux, PromiseState } from 'react-reflorp';
+import { reflorp, EntityState } from 'react-reflorp';
+import { Button, Input } from 'react-bootstrap';
+import history from '../router/myHistory';
+import styles from './css/CreateBoard.scss';
 
 /* eslint-disable react/prefer-stateless-function */
-@redux(() => ({
-  boardCreate: true,
-  boardCreateResponse: true,
+@reflorp(() => ({
+  board: {
+    create: true,
+    onCreate: (board) => {
+      history.push(`/board/${board.value.id}`);
+    },
+  },
 }))
 export default class CreateBoard extends Component {
   static propTypes = {
-    boardCreate: PropTypes.func.isRequired,
-    boardCreateResponse: PropTypes.instanceOf(PromiseState),
+    board: PropTypes.instanceOf(EntityState),
   };
 
   render() {
-    const { boardCreate, boardCreateResponse } = this.props;
-
-    let loading = false;
-    let error = '';
-    if (boardCreateResponse) {
-      if (boardCreateResponse.pending) {
-        loading = true;
-      }
-      if (boardCreateResponse.rejected) {
-        error = boardCreateResponse.reason.message;
-      }
-    }
+    const { board } = this.props;
 
     return (
-      <div className={['reflorp-loader', (loading ? 'reflorp-loader-loading' : '')].join(' ')}>
-        <CreateBoardForm createBoard={boardCreate} error={error} />
+      <div className={[styles.createBoardForm, 'reflorp-loader', (board.isLoading() ? 'reflorp-loader-loading' : '')].join(' ')}>
+        <form>
+          <Input onChange={board.handleChange} type="text" name="title" placeholder="Title" label="Name your board" bsSize="large" bsStyle={board.getError() ? 'error' : null} help={board.getError()} ref="title" />
+          <div className={styles.actions}>
+            <Button bsSize="large" disabled={board.isLoading()} onClick={board.save}>Create new board</Button>
+          </div>
+        </form>
       </div>
     );
   }

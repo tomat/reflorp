@@ -1,14 +1,17 @@
 import React, { Component, PropTypes } from 'react';
-import PageClick from 'react-page-click';
-import EditNoteForm from 'components/EditNoteForm';
+import { ReactPageClick } from 'react-page-click';
 import { Button, Glyphicon } from 'react-bootstrap';
-import { EntityWrapper } from 'react-reflorp';
+import { reflorp, EntityState } from 'react-reflorp';
+import EditNoteForm from 'components/EditNoteForm';
 import styles from 'css/Note.scss';
 
+@reflorp(({ noteId, boardId }) => ({
+  note: { id: noteId, parentId: boardId },
+}))
 class Note extends Component {
   static propTypes = {
-    note: PropTypes.object,
-    board: PropTypes.object,
+    note: PropTypes.instanceOf(EntityState),
+    board: PropTypes.instanceOf(EntityState),
     className: PropTypes.string,
   };
 
@@ -19,56 +22,50 @@ class Note extends Component {
       edit: false,
       height: 'auto',
     };
-    this.onEditEnable = this.onEditEnable.bind(this);
-    this.onEditDisable = this.onEditDisable.bind(this);
   }
 
-  onEditEnable() {
+  onEditEnable = () => {
     if (!this.state.edit) {
       this.setState({
         edit: true,
         height: `${this.refs.container.scrollHeight}px`,
       });
     }
-  }
+  };
 
-  onEditDisable() {
+  onEditDisable = () => {
     this.setState({
       edit: false,
       height: 'auto',
     });
-  }
+  };
 
   render() {
-    const { note, board, className } = this.props;
+    const { note, className } = this.props;
     const { edit, height } = this.state;
-
-    const LocalNote = ({ doDelete, data }) => (
-      <div>
-        <div className={styles.hoverActions}>
-          <Button onClick={(e) => { e.stopPropagation(); doDelete(); }}><Glyphicon glyph="remove" /></Button>
-        </div>
-        <span className={styles.nr}>
-          {data.nr}
-        </span>
-        <hr />
-        <h3>{data.summary}</h3>
-      </div>
-    );
 
     return (
       <div ref="container" style={{ height }} className={`${className} ${[(edit ? styles.edit : ''), styles.noteContainer].join(' ')}`}>
-        <PageClick onClick={this.onEditDisable}>
+        <ReactPageClick notify={this.onEditDisable}>
           <div ref="note" className={[styles.note, 'well well-sm', (edit ? 'well-active' : '')].join(' ')} onClick={this.onEditEnable}>
-            <EntityWrapper key="edit" entity="note" id={note.id} parentId={board.id} onEdit={this.onEditDisable}>
+            <div className={['reflorp-loader', (note.isLoading() ? 'reflorp-loader-loading' : '')].join(' ')}>
               <If condition={edit}>
-                <EditNoteForm onCancel={this.onEditDisable} />
+                <EditNoteForm note={note} onClose={this.onEditDisable} />
               <Else />
-                <LocalNote />
+                <div>
+                  <div className={styles.hoverActions}>
+                    <Button onClick={(e) => { e.stopPropagation(); note.del(); }}><Glyphicon glyph="remove" /></Button>
+                  </div>
+                  <span className={styles.nr}>
+                    {note.data.value.nr}
+                  </span>
+                  <hr />
+                  <h3>{note.data.value.summary}</h3>
+                </div>
               </If>
-            </EntityWrapper>
+            </div>
           </div>
-        </PageClick>
+        </ReactPageClick>
       </div>
     );
   }

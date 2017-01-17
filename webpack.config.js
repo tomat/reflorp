@@ -29,7 +29,7 @@ module.exports = {
   eslint: {
     configFile: '.eslintrc',
   },
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   entry: {
     client: [
       hotLoaderClient,

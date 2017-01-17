@@ -1,45 +1,46 @@
 import React, { Component, PropTypes } from 'react';
 import { Input, Button } from 'react-bootstrap';
+import { EntityState } from 'react-reflorp';
 import styles from 'css/EditNoteForm.scss';
 
 class EditNoteForm extends Component {
   static propTypes = {
-    onCancel: PropTypes.func,
-    doEdit: PropTypes.func,
-    error: PropTypes.string,
-    data: PropTypes.object,
+    onClose: PropTypes.func,
+    note: PropTypes.instanceOf(EntityState),
   };
 
-  constructor() {
-    super();
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
   componentWillMount() {
-    const { doEdit } = this.props;
-
-    // Reset data to latest saved version
-    doEdit(false);
+    this.props.note.reset();
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  save() {
+    const { note, onClose } = this.props;
 
-    const { doEdit } = this.props;
-
-    doEdit({ summary: this.refs.summary.getValue() });
+    note.save(onClose);
   }
 
   render() {
-    const { onCancel, error, data } = this.props;
+    const { onClose, note } = this.props;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <Input onFocus={(event) => { const f = event.target; const tempValue = event.target.value; f.value = ''; f.value = tempValue; }} defaultValue={data.summary} autoFocus type="text" placeholder="Summary" label="Name your note" bsSize="large" bsStyle={error ? 'error' : null} help={error} ref="summary" />
+      <form>
+        <Input
+          onFocus={(event) => { const f = event.target; const tempValue = event.target.value; f.value = ''; f.value = tempValue; }}
+          defaultValue={note.data.value.summary}
+          autoFocus
+          type="text"
+          placeholder="Summary"
+          label="Name your note"
+          bsSize="large"
+          bsStyle={note.getError() ? 'error' : null}
+          help={note.getError()}
+          ref="summary"
+          name="summary"
+          onChange={note.handleChange}
+        />
         <div className={styles.actions}>
-          <Button bsSize="large" onClick={onCancel}>Cancel</Button>
-          <Button type="submit" bsSize="large">Save</Button>
+          <Button onClick={onClose} bsSize="large">Cancel</Button>
+          <Button onClick={() => this.save()} bsSize="large">Save</Button>
         </div>
       </form>
     );

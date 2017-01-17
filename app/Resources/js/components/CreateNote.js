@@ -1,39 +1,43 @@
 import React, { PropTypes, Component } from 'react';
-import CreateNoteForm from 'components/CreateNoteForm';
-import { redux, PromiseState } from 'react-reflorp';
+import { reflorp, EntityState } from 'react-reflorp';
+import { Input, Button } from 'react-bootstrap';
 import styles from 'css/CreateNote.scss';
 
 /* eslint-disable react/prefer-stateless-function */
-@redux((state, props) => ({
-  noteCreate: { parentId: props.boardId },
-  noteCreateResponse: { parentId: props.boardId },
+@reflorp((props) => ({
+  note: {
+    parentId: props.boardId,
+    create: true,
+  },
 }))
 export default class CreateNote extends Component {
   static propTypes = {
-    noteCreate: PropTypes.func.isRequired,
-    noteCreateResponse: PropTypes.instanceOf(PromiseState),
+    note: PropTypes.instanceOf(EntityState),
     boardId: PropTypes.any,
   };
 
   render() {
-    const { noteCreate, noteCreateResponse, boardId } = this.props;
-
-    let loading = false;
-    let error = '';
-    if (noteCreateResponse) {
-      if (noteCreateResponse.pending) {
-        loading = true;
-      }
-      if (noteCreateResponse.rejected) {
-        error = noteCreateResponse.reason.message;
-      }
-    }
+    const { note } = this.props;
 
     return (
       <div className={styles.createNoteContainer}>
         <div className={styles.createNote}>
-          <div className={['well', 'reflorp-loader', (loading ? 'reflorp-loader-loading' : '')].join(' ')}>
-            <CreateNoteForm createNote={noteCreate} boardId={boardId} error={error} />
+          <div className={['well', 'reflorp-loader', (note.isLoading() ? 'reflorp-loader-loading' : '')].join(' ')}>
+            <form>
+              <Input
+                onChange={note.handleChange}
+                name="summary"
+                type="text"
+                placeholder="Summary"
+                label="Name your note"
+                bsSize="large"
+                bsStyle={note.getError() ? 'error' : null}
+                help={note.getError()}
+              />
+              <div className={styles.actions}>
+                <Button onClick={note.save} bsSize="large">Add note</Button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
