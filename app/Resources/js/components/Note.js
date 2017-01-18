@@ -48,7 +48,7 @@ class Note extends Component {
       <div ref="container" style={{ height }} className={`${className} ${[(edit ? styles.edit : ''), styles.noteContainer].join(' ')}`}>
         <ReactPageClick notify={this.onEditDisable}>
           <div ref="note" className={[styles.note, 'well well-sm', (edit ? 'well-active' : '')].join(' ')} onClick={this.onEditEnable}>
-            <div className={['reflorp-loader', (note.isLoading() ? 'reflorp-loader-loading' : '')].join(' ')}>
+            <div className={['reflorp-loader', (note.loading ? 'reflorp-loader-loading' : '')].join(' ')}>
               <If condition={edit}>
                 <EditNoteForm note={note} onClose={this.onEditDisable} />
               <Else />
@@ -57,10 +57,10 @@ class Note extends Component {
                     <Button onClick={(e) => { e.stopPropagation(); note.del(); }}><Glyphicon glyph="remove" /></Button>
                   </div>
                   <span className={styles.nr}>
-                    {note.data.value.nr}
+                    {note.value.nr}
                   </span>
                   <hr />
-                  <h3>{note.data.value.summary}</h3>
+                  <h3>{note.value.summary}</h3>
                 </div>
               </If>
             </div>

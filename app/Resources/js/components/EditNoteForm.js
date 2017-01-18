@@ -13,12 +13,6 @@ class EditNoteForm extends Component {
     this.props.note.reset();
   }
 
-  save() {
-    const { note, onClose } = this.props;
-
-    note.save(onClose);
-  }
-
   render() {
     const { onClose, note } = this.props;
 
@@ -26,21 +20,21 @@ class EditNoteForm extends Component {
       <form>
         <Input
           onFocus={(event) => { const f = event.target; const tempValue = event.target.value; f.value = ''; f.value = tempValue; }}
-          defaultValue={note.data.value.summary}
+          defaultValue={note.value.summary}
           autoFocus
           type="text"
           placeholder="Summary"
           label="Name your note"
           bsSize="large"
-          bsStyle={note.getError() ? 'error' : null}
-          help={note.getError()}
+          bsStyle={note.draft.rejected ? 'error' : null}
+          help={note.draft.rejected && note.draft.reason}
           ref="summary"
           name="summary"
           onChange={note.handleChange}
         />
         <div className={styles.actions}>
           <Button onClick={onClose} bsSize="large">Cancel</Button>
-          <Button onClick={() => this.save()} bsSize="large">Save</Button>
+          <Button onClick={() => note.save(onClose)} bsSize="large">Save</Button>
         </div>
       </form>
     );

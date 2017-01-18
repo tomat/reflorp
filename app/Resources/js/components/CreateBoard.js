@@ -22,11 +22,11 @@ export default class CreateBoard extends Component {
     const { board } = this.props;
 
     return (
-      <div className={[styles.createBoardForm, 'reflorp-loader', (board.isLoading() ? 'reflorp-loader-loading' : '')].join(' ')}>
+      <div className={[styles.createBoardForm, 'reflorp-loader', (board.loading ? 'reflorp-loader-loading' : '')].join(' ')}>
         <form>
-          <Input onChange={board.handleChange} type="text" name="title" placeholder="Title" label="Name your board" bsSize="large" bsStyle={board.getError() ? 'error' : null} help={board.getError()} ref="title" />
+          <Input onChange={board.handleChange} type="text" name="title" placeholder="Title" label="Name your board" bsSize="large" bsStyle={board.rejected ? 'error' : null} help={board.rejected && board.error} ref="title" />
           <div className={styles.actions}>
-            <Button bsSize="large" disabled={board.isLoading()} onClick={board.save}>Create new board</Button>
+            <Button bsSize="large" disabled={board.loading} onClick={board.save}>Create new board</Button>
           </div>
         </form>
       </div>
