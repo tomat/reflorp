@@ -46,7 +46,7 @@
     "react-motion": "0.4.2",
     "react-page-click": "^3.0.0",
     "react-redux": "4.4.1",
-    "react-reflorp": "1.0.0-rc.3",
+    "react-reflorp": "1.0.0-rc.4",
     "react-router": "2.0.1",
     "react-router-bootstrap": "0.20.1",
     "react-router-redux": "4.0.1",

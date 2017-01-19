@@ -3959,9 +3959,9 @@ react-refetch@^1.0.0:
     lodash "^4.11.0"
     warning "^2.1.0"
 
-react-reflorp@1.0.0-rc.3:
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/react-reflorp/-/react-reflorp-1.0.0-rc.3.tgz#f16d71348f2cd08f9cb2040e91cabf18e8a43296"
+react-reflorp@1.0.0-rc.4:
+  version "1.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/react-reflorp/-/react-reflorp-1.0.0-rc.4.tgz#0b39cee0ccafbec0f477caf4d998accc8c46e4bb"
   dependencies:
     extend "^3.0.0"
     hoist-non-react-statics "^1.0.3"
