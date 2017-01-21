@@ -12,6 +12,7 @@ import styles from 'css/ViewBoard.scss';
   notes: {
     load: true,
     parentId: props.id,
+    then: (notes) => (notes || null) && notes.sort((note1, note2) => note1.nr > note2.nr),
   },
 }))
 export default class ViewBoard extends Component {
